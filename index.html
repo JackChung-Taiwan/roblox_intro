@@ -4,56 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roblox遊戲創作體驗｜完整 8 關</title>
-<meta name="description" content="Roblox遊戲創作體驗，從第一塊地板、岩漿修復與風格跑酷，一路挑戰移動平台、消失橋、雷射門、金幣迷宮與怪物追逐，共八個互動關卡。">
+<meta name="description" content="Roblox遊戲創作體驗：使用 R 助教改造 3D 世界，完成地板、岩漿、跑酷、移動平台、消失橋、雷射門、金幣迷宮與怪物追逐八個關卡。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="nav"><div class="navin"><div class="brand"><span class="rbx-logo">R</span><b>ROBLOX</b> 遊戲創作體驗</div><div class="navtag">完整體驗・第 1～8 關</div></div></nav>
-<main class="wrap">
-  <section class="hero"><div class="block-deco" aria-hidden="true"><i></i><i></i><i></i></div>
-    <span class="kicker">🧩 完整八關體驗</span>
-    <h1>從闖關玩家進階成為<mark>遊戲設計師</mark></h1>
-    <p>從第一塊地板開始，依序練習外觀改造、測試修復、個人風格、移動平台、時間迴圈、條件順序、變數計數與 NPC 行為。每一關都要先修改，再親自測試。</p>
+<svg class="svg-defs" aria-hidden="true">
+  <symbol id="rhead" viewBox="10 4 80 80" fill="none">
+    <path d="M16.5 46 L16.5 16" stroke="#ffc93c" stroke-width="4" stroke-linecap="round"/><circle cx="16.5" cy="13" r="4.7" fill="#ffc93c"/>
+    <path d="M83.5 46 L83.5 16" stroke="#ffc93c" stroke-width="4" stroke-linecap="round"/><circle cx="83.5" cy="13" r="4.7" fill="#ffc93c"/>
+    <rect x="12" y="45" width="9" height="20" rx="3" fill="#7c8994"/><rect x="79" y="45" width="9" height="20" rx="3" fill="#7c8994"/>
+    <rect x="20" y="22" width="60" height="58" rx="16" fill="#c9d2d8"/><polygon points="37,12.5 63,12.5 56,23 44,23" fill="#ffc93c"/>
+    <rect x="27" y="37" width="46" height="21" rx="10" fill="#20262e"/><rect x="37" y="42.5" width="3.6" height="11" rx="1.8" fill="#ffc93c"/>
+    <rect x="59.4" y="42.5" width="3.6" height="11" rx="1.8" fill="#ffc93c"/><path d="M40 67 Q50 70.5 60 67" stroke="#141414" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<nav class="nav">
+  <div class="navin">
+    <div class="brand"><svg class="brandbot" aria-hidden="true"><use href="#rhead"/></svg><span>Roblox<span class="brand-accent">遊戲創作體驗</span></span></div>
+    <div class="navtag">3D 小模擬器・完整第 1～8 關</div>
+  </div>
+</nav>
+
+<main class="stage">
+  <section class="intro">
+    <span class="intro-kick">🎮 動手改造 3D 遊戲</span>
+    <h1>先玩、再改、再測試，<br>完成自己的 <em>Roblox 跑酷世界</em></h1>
+    <p>保留範例中的 R 助教、方塊角色與 3D 場景。每一關都用一句話改變世界，再親自進入遊玩模式驗證。</p>
   </section>
-  <div class="mobile-note">💻 建議使用電腦與鍵盤操作。方向鍵或 WASD 移動，部分關卡使用空白鍵衝刺。</div>
-  <div class="progress" id="progress"></div>
-  <section class="shell" id="gameShell">
-    <div class="levelhead"><h2 id="levelTitle"></h2><span class="badge" id="levelBadge"></span></div>
+
+  <div class="honesty"><span>🧊</span><span><b>這是網頁 3D 小模擬器</b>，有 🛠 設計／🎮 遊玩兩種模式；方向鍵或 WASD 移動、空白鍵跳躍、滑鼠拖曳旋轉視角。</span></div>
+
+  <div class="wizprog" id="progress" aria-label="關卡進度"></div>
+  <h2 class="lvltitle" id="levelTitle"></h2>
+
+  <section class="browser" id="gameShell">
     <div class="game">
-      <aside class="panel">
-        <div class="rhead"><div class="bot">🧱</div><div><div class="rname">建造助手</div><div class="rsub" id="assistantSub"></div></div><div class="counter" id="counter">🔧 0</div></div>
-        <div class="chat" id="chat"></div>
-        <div class="action">
-          <div class="how"><span id="how1" class="on">① 看任務</span><span>›</span><span id="how2">② 修改規則</span><span>›</span><span id="how3">③ 玩玩看</span><span>›</span><span id="how4">④ 過關</span></div>
-          <div class="btnrow">
-            <button class="btn playbtn" id="playBtn" type="button">▶ 玩玩看</button>
-            <button class="btn resetbtn" id="resetBtn" type="button">↻ 重設位置</button>
+      <aside class="dk-dock">
+        <div class="dk-dhead">
+          <span class="rhead"><svg class="rav" aria-hidden="true"><use href="#rhead"/></svg></span>
+          <div><div class="nm">R 助教</div><div class="sub" id="assistantSub"></div></div>
+          <span class="prog" id="counter">🎨 0</span>
+        </div>
+        <div class="dk-chat" id="chat"></div>
+        <div class="dk-actionbar">
+          <div class="howto">
+            <span id="how1" class="on">① 看任務</span><b>›</b><span id="how2">② 改世界</span><b>›</b><span id="how3">③ 玩玩看</span><b>›</b><span id="how4">④ 過關</span>
+          </div>
+          <div class="action-buttons">
+            <button class="dk-btn dk-btn-demo" id="resetBtn" type="button">↻ 重設位置</button>
+            <button class="dk-btn dk-btn-grass" id="playBtn" type="button">▶ 玩玩看</button>
           </div>
         </div>
       </aside>
-      <div class="scene">
-        <span class="mode" id="mode">🛠 設計模式</span>
-        <canvas id="cv" width="760" height="460" aria-label="Roblox遊戲創作體驗完整八關遊戲畫面"></canvas>
-        <div class="controls" id="controls">方向鍵／WASD 移動</div>
-        <div class="toast" id="toast"><div class="em">🎉</div><h3>過關！</h3><p id="toastText"></p></div>
+
+      <div class="game-scene" id="sceneHost">
+        <span class="modebadge design" id="mode">🛠 設計模式</span>
+        <span class="scene-counter">🎨 你改了 <b id="sceneCount">0</b> 個設計</span>
+        <canvas id="cv" width="760" height="520" aria-label="3D Roblox 方塊角色闖關場景"></canvas>
+        <div class="playhint"><span class="k">↑↓←→</span> 移動 · <span class="k">空白鍵</span> 跳 · <span class="k">🖱️ 拖曳</span> 轉視角</div>
+        <div class="redflash" id="redflash"></div>
+        <div class="passburst" id="toast"><div class="em">🎉</div><div class="t" id="toastText">過關！</div></div>
+        <div class="scene-fallback" id="fallback" hidden>3D 場景載入失敗，請重新整理頁面。</div>
       </div>
     </div>
+
+    <div class="lvlsplash" id="splash">
+      <div class="sdeco" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span class="spk" id="splashTag">🎮 第 1 關</span>
+      <h3 id="splashTitle">我的第一塊地板</h3>
+      <p class="goal" id="splashGoal"></p>
+      <button class="btn-start" id="startLevel" type="button">開始吧！</button>
+    </div>
   </section>
+
   <div class="nextbar"><button class="next" id="nextBtn" type="button" hidden>前往下一關 →</button></div>
-  <section class="shell result" id="result" hidden>
-    <div class="kicker">🏆 八個關卡完成</div>
+
+  <section class="browser result" id="result" hidden>
+    <div class="result-kick">🏆 八個關卡完成</div>
     <h2>你已經不只是玩家，還是關卡設計師。</h2>
-    <p class="lead">你用測試找到問題，再用不同指令修改規則、物件與角色行為。這正是遊戲設計與程式邏輯的核心循環。</p>
-    <div class="stats"><div class="stat"><b id="statCommands">0</b><span>次規則修改</span></div><div class="stat"><b>8</b><span>種關卡機制</span></div><div class="stat"><b id="statWins">0</b><span>個完成測試</span></div></div>
-    <div class="learned"><span>物件與外觀</span><span>測試與修復</span><span>風格與作品</span><span>移動與速度</span><span>時間與迴圈</span><span>條件與順序</span><span>變數與計數</span><span>NPC 行為</span></div>
+    <p>你親手改造物件、修復關卡、設計規則並測試結果，完成一套完整的遊戲創作循環。</p>
+    <div class="stats"><div><b id="statCommands">0</b><span>次世界改造</span></div><div><b>8</b><span>種關卡機制</span></div><div><b id="statWins">0</b><span>個完成測試</span></div></div>
+    <div class="learned"><span>物件與外觀</span><span>測試與修復</span><span>風格與作品</span><span>速度與座標</span><span>時間與迴圈</span><span>條件與順序</span><span>變數與計數</span><span>NPC 行為</span></div>
     <button class="next" id="replayBtn" type="button">再玩一次</button>
   </section>
 </main>
-<footer class="footer">本頁為延伸教學原型，可直接離線開啟。可延伸至 Roblox Studio 與 Lua 程式設計課程。</footer>
+
+<footer>Roblox 與 Roblox Studio 為 Roblox Corporation 之商標。本頁為獨立教學用 3D 模擬體驗。</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="levels.js"></script>
-<script src="engine.js"></script>
-<script src="scenes-a.js"></script>
-<script src="scenes-b.js"></script>
-<script>RBX.start();</script>
+<script src="game.js"></script>
 </body>
 </html>
