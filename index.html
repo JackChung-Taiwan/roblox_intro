@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roblox遊戲創作體驗｜追加關卡 4–8</title>
-<meta name="description" content="Roblox遊戲創作體驗，包含移動平台、消失橋、雷射門、金幣迷宮與怪物追逐五個互動關卡。">
+<title>Roblox遊戲創作體驗｜完整 8 關</title>
+<meta name="description" content="Roblox遊戲創作體驗，從第一塊地板、岩漿修復與風格跑酷，一路挑戰移動平台、消失橋、雷射門、金幣迷宮與怪物追逐，共八個互動關卡。">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="nav"><div class="navin"><div class="brand"><span class="rbx-logo">R</span><b>ROBLOX</b> 遊戲創作體驗</div><div class="navtag">追加關卡・第 4～8 關</div></div></nav>
+<nav class="nav"><div class="navin"><div class="brand"><span class="rbx-logo">R</span><b>ROBLOX</b> 遊戲創作體驗</div><div class="navtag">完整體驗・第 1～8 關</div></div></nav>
 <main class="wrap">
   <section class="hero"><div class="block-deco" aria-hidden="true"><i></i><i></i><i></i></div>
-    <span class="kicker">🧩 延伸試玩關卡</span>
+    <span class="kicker">🧩 完整八關體驗</span>
     <h1>從闖關玩家進階成為<mark>遊戲設計師</mark></h1>
-    <p>延續原本的教學節奏：先觀察問題，選擇指令修改遊戲規則，再親自測試。五關分別練習移動平台、時間規則、條件順序、變數計數與 NPC 行為。</p>
+    <p>從第一塊地板開始，依序練習外觀改造、測試修復、個人風格、移動平台、時間迴圈、條件順序、變數計數與 NPC 行為。每一關都要先修改，再親自測試。</p>
   </section>
   <div class="mobile-note">💻 建議使用電腦與鍵盤操作。方向鍵或 WASD 移動，部分關卡使用空白鍵衝刺。</div>
   <div class="progress" id="progress"></div>
@@ -33,7 +33,7 @@
       </aside>
       <div class="scene">
         <span class="mode" id="mode">🛠 設計模式</span>
-        <canvas id="cv" width="760" height="460" aria-label="Roblox遊戲創作體驗追加關卡遊戲畫面"></canvas>
+        <canvas id="cv" width="760" height="460" aria-label="Roblox遊戲創作體驗完整八關遊戲畫面"></canvas>
         <div class="controls" id="controls">方向鍵／WASD 移動</div>
         <div class="toast" id="toast"><div class="em">🎉</div><h3>過關！</h3><p id="toastText"></p></div>
       </div>
@@ -41,11 +41,11 @@
   </section>
   <div class="nextbar"><button class="next" id="nextBtn" type="button" hidden>前往下一關 →</button></div>
   <section class="shell result" id="result" hidden>
-    <div class="kicker">🏆 追加關卡完成</div>
+    <div class="kicker">🏆 八個關卡完成</div>
     <h2>你已經不只是玩家，還是關卡設計師。</h2>
     <p class="lead">你用測試找到問題，再用不同指令修改規則、物件與角色行為。這正是遊戲設計與程式邏輯的核心循環。</p>
-    <div class="stats"><div class="stat"><b id="statCommands">0</b><span>次規則修改</span></div><div class="stat"><b>5</b><span>種關卡機制</span></div><div class="stat"><b id="statWins">0</b><span>個完成測試</span></div></div>
-    <div class="learned"><span>移動與速度</span><span>時間與迴圈</span><span>條件與順序</span><span>變數與計數</span><span>NPC 行為</span></div>
+    <div class="stats"><div class="stat"><b id="statCommands">0</b><span>次規則修改</span></div><div class="stat"><b>8</b><span>種關卡機制</span></div><div class="stat"><b id="statWins">0</b><span>個完成測試</span></div></div>
+    <div class="learned"><span>物件與外觀</span><span>測試與修復</span><span>風格與作品</span><span>移動與速度</span><span>時間與迴圈</span><span>條件與順序</span><span>變數與計數</span><span>NPC 行為</span></div>
     <button class="next" id="replayBtn" type="button">再玩一次</button>
   </section>
 </main>
