@@ -3,8 +3,10 @@
 </style></head><body><header><div class="eyebrow">ROBLOX STUDIO × LUAU</div><h1>Code Assistant<br>100 種實作教學</h1><p class="lead">從方塊變色、尺寸修改，一路學到玩家超能力、事件觸發、Server Script、LocalScript、GUI、RemoteEvent、DataStore 與完整遊戲系統。</p><div class="stats"><div class="stat"><b>100</b>實作範例</div><div class="stat"><b>10</b>主題分類</div><div class="stat"><b>5</b>難度層級</div></div></header><div class="toolbar"><div class="toolbar-inner"><input id="search" type="search" placeholder="搜尋：變顏色、二段跳、GUI、RemoteEvent、DataStore…"><div class="chips" id="chips"><button class="chip active" data-filter="all">全部 100 種</button></div></div></div><main><div class="notice"><strong>使用方式：</strong>先在 Roblox Studio 建立標示的 Script、LocalScript、Part 或 GUI，再把「Code Assistant 提示詞」輸入 Assistant，或直接複製範例程式碼。AI 產生的程式必須實際測試；金幣、傷害、購買與存檔等重要邏輯應由伺服器驗證。</div><div id="resultCount" class="section-title">顯示全部 100 個範例</div><div class="grid" id="grid"></div></main><footer>Roblox Code Assistant 100 種用法｜繁體中文教學版</footer>
 <script>
 (async()=>{
-const b64=await fetch("code-assistant-data/data.gz.txt").then(r=>r.text());
+const DATA_URL="https://raw.githubusercontent.com/JackChung-Taiwan/roblox_intro/main/code-assistant-data/data.gz.txt";
+const b64=await fetch(DATA_URL,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("資料檔讀取失敗："+r.status);return r.text()});
 const bytes=Uint8Array.from(atob(b64.trim()),c=>c.charCodeAt(0));
+if(!("DecompressionStream" in window))throw new Error("目前瀏覽器不支援 gzip 解壓縮，請使用新版 Chrome、Edge 或 Safari");
 const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
 const RBX_DATA=JSON.parse(await new Response(stream).text());
 const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -12,5 +14,6 @@ const grid=document.querySelector("#grid"),chips=document.querySelector("#chips"
 for(const [cat,rows] of RBX_DATA){const b=document.createElement("button");b.className="chip";b.dataset.filter=cat;b.textContent=cat.replace(/^\d+\s/,"");chips.appendChild(b);for(const r of rows){const [n,title,level,type,place,prompt,code,desc]=r;grid.insertAdjacentHTML("beforeend",`<article class="card" data-cat="${esc(cat)}" data-search="${esc((title+" "+desc+" "+prompt+" "+type+" "+place).toLowerCase())}"><div class="card-head"><span class="num">#${String(n).padStart(3,"0")}</span><span class="level">${esc(level)}</span><span class="type">${esc(type)}</span></div><h3>${esc(title)}</h3><p class="desc">${esc(desc)}</p><div class="meta"><b>放置位置：</b>${esc(place)}</div><details><summary>Code Assistant 提示詞</summary><div class="prompt">${esc(prompt)}</div></details><div class="code-wrap"><button class="copy">複製程式碼</button><pre><code>${esc(code)}</code></pre></div></article>`)}}
 const cards=[...document.querySelectorAll(".card")];function filter(){const q=search.value.trim().toLowerCase();let shown=0;for(const c of cards){const ok=(active==="all"||c.dataset.cat===active)&&(!q||c.dataset.search.includes(q)||c.innerText.toLowerCase().includes(q));c.classList.toggle("hidden",!ok);if(ok)shown++}count.textContent=`目前顯示 ${shown} 個範例`}
 chips.addEventListener("click",e=>{if(!e.target.matches(".chip"))return;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));e.target.classList.add("active");active=e.target.dataset.filter;filter()});search.addEventListener("input",filter);grid.addEventListener("click",async e=>{if(!e.target.matches(".copy"))return;await navigator.clipboard.writeText(e.target.parentElement.querySelector("code").innerText);e.target.textContent="已複製";setTimeout(()=>e.target.textContent="複製程式碼",1200)});
-})().catch(err=>{document.querySelector("#resultCount").textContent="資料載入失敗，請重新整理頁面";console.error(err)});
+filter();
+})().catch(err=>{document.querySelector("#resultCount").textContent="資料載入失敗，請重新整理頁面或改用新版 Chrome / Edge";console.error(err)});
 </script></body></html>
